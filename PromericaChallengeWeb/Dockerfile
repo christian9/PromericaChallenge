@@ -7,7 +7,7 @@ EXPOSE 443
 # Utiliza la imagen oficial de SDK para compilar la aplicación
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["PromericaChallengeWeb.csproj", "PromericaChallengeWeb"]
+COPY ["/src/PromericaChallengeWeb.csproj", "PromericaChallengeWeb"]
 RUN dotnet restore "PromericaChallengeWeb/PromericaChallengeWeb.csproj"
 COPY . .
 WORKDIR "/src/PromericaChallengeWeb"
