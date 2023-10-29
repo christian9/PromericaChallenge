@@ -4,16 +4,16 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-# Utiliza la imagen oficial de SDK para compilar la aplicación
+# Utiliza la imagen oficial de SDK para compilar la aplicaciÃ³n
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["PromericaChallengeWeb/PromericaChallengeWeb.csproj", "PromericaChallengeWeb/"]
+COPY ["PromericaChallengeWeb.csproj", "PromericaChallengeWeb"]
 RUN dotnet restore "PromericaChallengeWeb/PromericaChallengeWeb.csproj"
 COPY . .
 WORKDIR "/src/PromericaChallengeWeb"
 RUN dotnet build "PromericaChallengeWeb.csproj" -c Release -o /app/build
 
-# Publica la aplicación
+# Publica la aplicaciÃ³n
 FROM build AS publish
 RUN dotnet publish "PromericaChallengeWeb.csproj" -c Release -o /app/publish
 
